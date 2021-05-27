@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+  <section class="py-5 text-center container">
+  </section>
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+
+
+        <form method="post" action="{% url 'product_edit' product.id %}"  enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="hidden" id="_method" name="_method" value="post">
+            <div class="form-group"> <label for="inputProductName">Название</label>
+                <input type="text" class="form-control" id="inputProductName" name="name" aria-describedby="productNameHelp" placeholder="" value="{{ product.name }}">
+            </div>
+            <div class="form-group">
+                <label for="inputProductDescr">Описание</label>
+                <textarea type="text" class="form-control" id="inputProductDescr" name="description" aria-placeholder="Description" rows="3">{{ product.description }}</textarea>
+            </div>
+            <div class="form-group">
+                <label for="selectProductCategory">Категория</label>
+                <select class="form-control" id="selectProductCategory" name="category">
+                    {% for cat in category %}
+                    <option value="{{ cat.id }}">{{ cat.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="inputProductPrice">Цена</label>
+                <input type="number" class="form-control" id="inputProductPrice" name="price" placeholder="Цена" value="{{ product.price }}">
+            </div>
+
+            <div class="form-group">
+                <p></p>
+                <input type="file" name="image" accept="image/*">
+                <p></p>
+            </div> <button type="submit" class="btn btn-primary">Сохранить</button>
+
+        </form>
+
+
+    </div>
+  </div>
+
+{% endblock %}
+
