@@ -8,8 +8,28 @@ import json
 
 # Create your views here.
 
-# @login_required
+
+@login_required
 def index(request):
     if request.method == 'GET':
         return render(request, 'main/index.html')
 
+
+def login_user(request):
+    if request.method == 'GET':
+        return render(request, 'main/log_in.html', {'form': AuthenticationForm()})
+    elif request.method == 'POST':
+        user = authenticate(request, username=request.POST['username'], password=request.POST['password'])
+        if user is None:
+            return render(request, 'main/log_in.html',
+                          {'form': AuthenticationForm(), 'error': "Неверное имя или пароль"})
+        else:
+            login(request, user)
+            return redirect('index')
+
+
+@login_required
+def logout_user(request):
+    if request.method == 'POST':
+        logout(request)
+        return redirect('login')

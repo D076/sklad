@@ -10,6 +10,6 @@ urlpatterns = [
     # path('products/<int:id>', views.product_view, name='product_view'),
     # path('products/create', views.create_item, name='create_item'),
     # path('search/', views.search_list, name='search'),
-    # path('login/', views.login_user, name='logs'),
-    # path('logout/', views.logout_user, name='logout')
+    path('login/', views.login_user, name='login'),
+    path('logout/', views.logout_user, name='logout')
 ]
