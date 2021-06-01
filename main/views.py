@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout, authenticate, login
 from django.contrib.auth.forms import AuthenticationForm
 import json
-# from .models import Category, Product
+from .models import Mat
 # from .forms import ProductForm
 
 # Create your views here.
@@ -12,7 +12,9 @@ import json
 @login_required
 def index(request):
     if request.method == 'GET':
-        return render(request, 'main/index.html')
+        dict = {'mat': Mat.objects.all()}
+        print(dict)
+        return render(request, 'main/index.html', dict)
 
 
 def login_user(request):
