@@ -54,6 +54,9 @@ class StorageMat(models.Model):
     mat = models.ForeignKey(Mat, on_delete=models.DO_NOTHING)
     storage = models.ForeignKey(Storage, on_delete=models.DO_NOTHING)
 
+    def __str__(self):
+        return str(self.mat)
+
 
 class MatComing(models.Model):
     code = models.CharField(max_length=50)
