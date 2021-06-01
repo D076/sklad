@@ -113,3 +113,6 @@ dmypy.json
 # Pyre type checker
 .pyre/
 .idea/vcs.xml
+.idea/encodings.xml
+.idea/misc.xml
+.idea/sklad.iml
