@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+
+  <section class="py-5 text-center container">
+  </section>
+<div class="container">
+<!--  https://mdbootstrap.com/docs/b4/jquery/tables/search/-->
+  <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+  <thead>
+    <tr>
+      <th class="th-sm">Наименование
+      </th>
+      <th class="th-sm">Шифр
+      </th>
+      <th class="th-sm">Ед. изм.
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr>
+      <td>Доска 5x10</td>
+      <td>12345678</td>
+      <td>шт</td>
+    </tr>
+    {% for i in mat %}
+    <tr>
+      <td>{{ i.name }}</td>
+      <td>{{ i.code }}</td>
+      <td>{{ i.unit }}</td>
+    </tr>
+    {% endfor %}
+    <tr>
+      <td>Доска 5x10</td>
+      <td>12345678</td>
+      <td>шт</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <th>Наименование
+      </th>
+      <th>Шифр
+      </th>
+      <th>Ед. изм.
+      </th>
+    </tr>
+  </tfoot>
+</table>
+
+</div>
+
+{% endblock %}
